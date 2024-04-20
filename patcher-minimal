@@ -84,6 +84,7 @@ echo "successfully finished patch to fragmented image!"
 # reassemble fragmented image
 mkdir $csd/output
 echo "attempting to defragment image! if your image is corrupted, this may not end well..."
+$csd/magiskboot cpio ramdisk.cpio 'add 0755 system/bin/recovery system/bin/recovery'
 $csd/magiskboot repack $csd/header.img $csd/output/output.img
 existance $csd/output/output.img "echo assembled output.img! && cd $csd" "echo output.img not found, exiting && exit 1"
 
@@ -98,7 +99,7 @@ echo "signed image successfully!"
 echo "packaging image for odin..."
 tar -cvf $csd/output/recovery.tar $csd/output/recovery.img &&
 md5sum -t $csd/output/recovery.tar >> $csd/output/recovery.tar &&
-mv $csd/output/output.tar $csd/output/recovery.tar.md5 &&
+mv $csd/output/recovery.tar $csd/output/recovery.tar.md5 &&
 echo "successfully packaged recovery.img -> recovery.tar.md5"
 
 # hehe
