@@ -5,7 +5,7 @@ on:
     inputs:
       image_url:
         description: 'Recovery Image URL'
-        default: 'https://oshi.at/ (without randomize name)'
+        default: 'https://oshi.at/ (without randomize name, recovery.img.lz4)'
         required: true
         type: string
 
@@ -23,7 +23,7 @@ jobs:
          
     - name: Download recovery image from URL
       run: |
-         wget -O recovery.img ${{github.event.inputs.image_url}} --no-check-certificate
+         wget -O recovery.img.lz4 ${{github.event.inputs.image_url}} --no-check-certificate
 
     - name: Start patching script
       run: |
