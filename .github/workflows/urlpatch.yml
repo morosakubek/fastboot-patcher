@@ -5,7 +5,7 @@ on:
     inputs:
       image_url:
         description: 'Recovery Image URL'
-        default: 'https://transfer.sh/<file-id>/<file>.img'
+        default: 'https://oshi.at/ (without randomize name)'
         required: true
         type: string
 
@@ -29,6 +29,7 @@ jobs:
       run: |
          chmod a+x magiskboot
          chmod a+x patcher-minimal
+         chmod a+x avbtool
          ./patcher-minimal
 
     - name: Upload patched image files
@@ -44,8 +45,8 @@ jobs:
     - name: Upload keys for patched image
       uses: actions/upload-artifact@v4
       with:
-        path: /home/runner/work/fastboot-patcher/fastboot-patcher/keys/*.*
-        name: Patched Image Key Bundle
+        path: /home/runner/work/Patch-Recovery/Patch-Recovery/output/*.md5
+        name: Patched-Recovery
         if-no-files-found: error
         retention-days: 15
         compression-level: 0
