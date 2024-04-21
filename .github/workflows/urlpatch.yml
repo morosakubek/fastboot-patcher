@@ -32,11 +32,21 @@ jobs:
          chmod a+x avbtool
          ./patcher-minimal
 
+    - name: Upload patched image files
+      uses: actions/upload-artifact@v4
+      with:
+        path: /home/runner/work/fastboot-patcher/fastboot-patcher/output/*.md5
+        name: Patched Recovery Image Bundle
+        if-no-files-found: error
+        retention-days: 15
+        compression-level: 0
+        overwrite: true
+        
     - name: Upload keys for patched image
       uses: actions/upload-artifact@v4
       with:
-        path: /home/runner/work/Patch-Recovery/Patch-Recovery/output/*.md5
-        name: Patched-Recovery
+        path: /home/runner/work/fastboot-patcher/fastboot-patcher/keys/*.*
+        name: Patched Image Key Bundle
         if-no-files-found: error
         retention-days: 15
         compression-level: 0
