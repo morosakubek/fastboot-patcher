@@ -82,10 +82,9 @@ echo 'finished (16)'
 echo "successfully finished patch to fragmented image!"
 
 # reassemble fragmented image
-mkdir $csd/output && cd output
+mkdir $csd/output && cd $csd/output
 echo "attempting to defragment image! if your image is corrupted, this may not end well..."
 $csd/magiskboot repack $csd/header.img $csd/output/recovery.img
-existance $csd/output/recovery.img "echo assembled recovery.img! && cd $csd" "echo recovery.img not found, exiting && exit 1"
 
 # sign patched image with keyfile
 echo "extracting public key to phh.pub.bin..."
