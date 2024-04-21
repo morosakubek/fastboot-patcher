@@ -10,19 +10,8 @@ csd=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 pass=":"
 #####================================================#####
 
-# exit or rename if necessary
-existance $csd/recovery.img.lz4 $pass $pass
-if [ $found == true ]; then
-   echo "found lz4-zipped image! unzipping..." &&
-   lz4 -B6 --content-size -f $csd/recovery.img.lz4 && mv ./recovery.img ./raw.img &&
-   echo "unzipped to raw.img!"
-else existance $csd/recovery.img $pass $pass
-   if [ $found == true ]; then
-      mv $csd/recovery.img $csd/raw.img &&
-      echo "found unzipped image!"
-      else echo "no image to patch found. please place recovery.img in folder!" && exit 1
-   fi
-fi
+lz4 -B6 --content-size -f $csd/recovery.img.lz4 && mv ./recovery.img ./raw.img &&
+echo "unzipped to raw.img!"
 
 # edit raw image
 echo "editing image..."
