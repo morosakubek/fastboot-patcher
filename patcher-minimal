@@ -82,10 +82,10 @@ echo 'finished (16)'
 echo "successfully finished patch to fragmented image!"
 
 # reassemble fragmented image
-mkdir $csd/output
+mkdir $csd/output && cd output
 echo "attempting to defragment image! if your image is corrupted, this may not end well..."
-$csd/magiskboot repack $csd/header.img $csd/output/output.img
-existance $csd/output/output.img "echo assembled output.img! && cd $csd" "echo output.img not found, exiting && exit 1"
+$csd/magiskboot repack $csd/header.img recovery.img
+existance $csd/output/recovery.img "echo assembled output.img! && cd $csd" "echo output.img not found, exiting && exit 1"
 
 # sign patched image with keyfile
 echo "extracting public key to phh.pub.bin..."
@@ -95,7 +95,7 @@ python3 $csd/avbtool add_hash_footer --image $csd/output/recovery-patched.img --
 echo "signed image successfully!"
 
 # package image for use in odin
-mkdir output && cd output
+mkdir recovery && cd recovery
 mv ../recovery-patched.img recovery.img
 tar cvf fastbootd-recovery.tar recovery.img
 md5sum -t fastbootd-recovery.tar >> fastbootd-recovery.tar
