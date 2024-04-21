@@ -94,10 +94,10 @@ echo "signed image successfully!"
 
 # package image for use in odin
 mkdir $csd/output && cd $csd/output
-mv $csd/recovery-patched.img recovery.img
-tar cvf fastbootd-recovery.tar recovery.img
-md5sum -t fastbootd-recovery.tar >> fastbootd-recovery.tar
-mv fastbootd-recovery.tar fastbootd-recovery.tar.md5
+mv $csd/recovery-patched.img $csd/output/recovery.img
+tar cvf $csd/output/fastbootd-recovery.tar $csd/output/recovery.img
+md5sum -t $csd/output/fastbootd-recovery.tar >> $csd/output/fastbootd-recovery.tar
+mv $csd/output/fastbootd-recovery.tar $csd/output/fastbootd-recovery.tar.md5
 
 # hehe
 echo "enjoy! hope what you're trying to do works."
