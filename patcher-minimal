@@ -10,7 +10,8 @@ csd=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 pass=":"
 #####================================================#####
 
-lz4 -B6 --content-size -f $csd/recovery.img.lz4 && mv ./recovery.img ./raw.img &&
+lz4 -B6 --content-size -f $csd/recovery.img.lz4 recovery.img 
+mv ./recovery.img ./raw.img &&
 echo "unzipped to raw.img!"
 
 # edit raw image
