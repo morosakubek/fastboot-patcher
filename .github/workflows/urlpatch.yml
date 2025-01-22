@@ -5,7 +5,7 @@ on:
     inputs:
       image_url:
         description: 'Recovery Image URL'
-        default: 'https://oshi.at/ (without randomize name, recovery.img.lz4)'
+        default: 'https://catbox.moe/ (recovery.img.lz4)'
         required: true
         type: string
 
