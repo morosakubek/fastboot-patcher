@@ -35,7 +35,7 @@ jobs:
     - name: Upload patched image files
       uses: actions/upload-artifact@v4
       with:
-        path: /home/runner/work/fastboot-patcher/fastboot-patcher/output/*.*
+        path: /home/runner/work/fastboot-patcher/fastboot-patcher/output/*.md5
         name: Patched Recovery Image Bundle
         if-no-files-found: error
         retention-days: 15
